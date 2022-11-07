@@ -80,12 +80,3 @@ resource "aws_security_group" "database_sg" {
     name = "database_sg"
   }
 }
-
-resource "aws_security_group_rule" "sshrule" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "SSH"
-  cidr_blocks       = [aws_vpc.custom_vpc.cidr_block]
-  security_group_id = "aws_security_group.webserver_sg.id"
-}
